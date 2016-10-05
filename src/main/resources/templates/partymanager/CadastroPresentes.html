@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+	<title>Party Manager</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de Presentes
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+	
+		<form method="POST" th:object="${presente}" class="form-vertical  js-form-loading">
+			<div class = "alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+				<button type="button" class="close" data-dismis="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<th:block th:each="erro : ${#fields.detailedErrors()}">
+					<div>
+						<i class="fa fa-exclamation-circle>"></i>
+						<span th:text="${erro.message}">Já existe um presente com a descrição informada</span>
+					</div>
+				</th:block>
+			</div>
+			
+			<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+				<label for="descricao" class="control-label">Descrição:</label>
+				<input id="descricao" type="text" class="form-control" th:field="*{descricao}"/>
+			</div>
+	
+			<div class="form-group" th:classappend="${#fields.hasErrors('link')} ? has-error">
+				<label for="link" class="control-label">Link:</label>
+				<input id="link" type="text" class="form-control" th:field="*{link}"/>
+			</div>
+	
+		<!-- <div class="form-group" th:classappend="${#fields.hasErrors('evento')} ? has-error">
+				<label for="evento" class="control-label">Evento:</label>
+				<input id="evento" type="text" class="form-control" th:field="*{evento}"/>
+			</div>-->
+						
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+				<a class="btn btn-primary" th:href="@{/partymanager/listagemEventos}">Cancelar</a>
+			</div>
+	
+		</form>
+	</div>
+
+</section>
+</body>
+</html>

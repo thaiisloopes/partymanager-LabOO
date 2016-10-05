@@ -1,0 +1,6 @@
+CREATE TABLE convidado(
+	idConvidado int(20) PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	numAcompanhantes int NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutSimples">
+	
+<head>
+	<title>Login</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>
+						Login
+					</h1>
+				</div>
+			
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn btn-primary" th:href="@{/partymanager/novoPromoter}">
+							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Cadastrar</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<form method="get" class="form-vertical  js-form-loading">
+			
+			<div class="form-group">
+				<label for="input-produto-nome">E-mail:</label>
+				<input id="input-produto-nome" type="text" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-produto-nome">Senha:</label>
+				<input id="input-produto-nome" type="text" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
+				<a class="btn btn-primary" th:href="@{/partymanager/listagemEventos}">Entrar</a>
+				<a class="btn btn-primary" th:href="@{/partymanager}">Cancelar</a>
+			</div>
+	
+		</form>
+	</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+	<title>Party Manager</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de Item de Orçamento
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+	
+		<form method="POST" th:object="${itemOrcamento}" class="form-vertical  js-form-loading">
+		
+			<div class = "alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+				<button type="button" class="close" data-dismis="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<th:block th:each="erro : ${#fields.detailedErrors()}">
+					<div>
+						<i class="fa fa-exclamation-circle>"></i>
+						<span th:text="${erro.message}">Já existe um um item de orçamento com a descrição informada</span>
+					</div>
+				</th:block>
+			</div>
+			
+			<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+				<label for="descricao" class="control-label">Descrição:</label>
+				<input id="descricao" type="text" class="form-control" th:field="*{descricao}"/>
+			</div>
+			
+			<div class="form-group" th:classappend="${#fields.hasErrors('valor')} ? has-error">
+				<label for="valor" class="control-label">Valor:</label>
+				<input id="valor" type="text" class="form-control" th:field="*{valor}"/>
+			</div>
+			
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+				<a class="btn btn-primary" th:href="@{/partymanager/listagemEventos}">Cancelar</a>
+			</div>
+	
+		</form>
+	</div>
+
+</section>
+</body>
+</html>
